@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deploy
+  labels:
+    name: worker-deploy
+    app: demo-voting-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: worker-app-pod
+      app: demo-voting-app
+
+  template:
+    metadata:
+      name: worker-app-pod
+      labels:
+        name: voting-app-pod
+        app: demo-voting-app
+    spec:
+      containers:
+        - name: worker-app
+          image: kodekloud/examplevotingapp_worker:v1
+
+#All comand to run all service
+########################################
+#1)kubectl get svc
+#2)kubectl create -f worker-app-deployment.yaml
+#3)kubectl create -f voting-app-service.yaml
+#4)kubectl create -f redis-deploy.yaml
+#5)kubectl create -f voting-app-service.yaml
+#6)kubectl create -f voiting-app-deploy.yaml
+#7)kubectl create -f voting-app-service.yaml
+#8)kubectl get deployments
+#9)kubectl get pods
+#10)kubectl create -f worker-app-deployment.yaml
+#11)kubectl create -f result-app-deploy.yaml
+#12)kubectl create -f result-app-service.yaml
+#13)minikube service result-service --url
+#14)kubectl scale deployment voiting-app-deploy --replicas=3
+#15)kubectl get deployment voiting-app-deploy
+#16)
+#########################################
